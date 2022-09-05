@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+    
+	<bean id="violon" class="bo.couplagefaible.Violon" />
+	<bean id="piano" class="bo.couplagefaible.Piano" />
+	
+	<bean id="pianiste" class="bo.couplagefaible.Musicien">
+		<property name="morceau" value="Le bolero de Ravel" />
+		<property name="instrument" ref="piano" />
+	</bean>
+	
+	<bean id="violoniste" class="bo.couplagefaible.Musicien">
+		<property name="morceau" value="Le bolero de Ravel" />
+		<property name="instrument" ref="violon" />
+	</bean>
+	
+	<bean id="orchestre" class="bo.couplagefaible.Orchestre">
+		<property name="musiciens">
+			<list value-type="bo.couplagefaible.Musicien">
+				<ref bean="pianiste" />
+				<ref bean="violoniste" />
+			</list>
+		</property>
+	</bean>
+
+</beans>
